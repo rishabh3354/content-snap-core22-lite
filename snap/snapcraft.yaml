@@ -1,0 +1,53 @@
+name: content-snap-core22-lite
+version: '22.04'
+summary: Runtime stack based on core22.
+description: This snap consists of necessary lib packages that are required by our apps, excluding ffmpeg, mpv.
+grade: stable
+confinement: strict
+base: core22
+
+architectures:
+  - build-on: amd64
+
+slots:
+  content-snap-core22-lite:
+    interface: content
+    read:
+      - /
+
+parts:
+  platform:
+     plugin: nil
+     stage-packages:
+       - adwaita-icon-theme
+       - dmz-cursor-theme
+       - gnome-themes-standard
+       - gsettings-desktop-schemas
+       - libdb5.3
+       - libgdk-pixbuf2.0-0
+       - libglib2.0-0
+       - libglu1-mesa
+       - libslang2
+       - libxkbcommon0
+       - light-themes
+       - locales-all
+       - qt5-gtk-platformtheme
+       - shared-mime-info
+       - fonts-ubuntu
+       - qt5-image-formats-plugins
+       - xdg-user-dirs
+       - samba-libs
+       - fontconfig
+       - fonts-noto-core
+       - fonts-noto-cjk
+       - fonts-noto-extra
+       - fonts-noto-color-emoji
+       - fonts-dejavu-core
+
+  cleanup:
+    after:
+      - platform
+    plugin: nil
+    override-prime: |
+      cd usr/share
+      rm -rf apport bash-completion bug doc doc-base lintian man pam-configs pkgconfig upstart zsh
