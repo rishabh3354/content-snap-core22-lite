@@ -22,6 +22,7 @@ parts:
        - adwaita-icon-theme
        - dmz-cursor-theme
        - gnome-themes-standard
+       - libglib2.0-bin
        - gsettings-desktop-schemas
        - libdb5.3
        - libgdk-pixbuf2.0-0
